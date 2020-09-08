@@ -12,11 +12,11 @@ class PaymentController extends Controller
         try {
             $gateway = new PaymentContext($request->gateway);
 
-            $gateway->donate($request);
+            $gateway->pay($request);
         } catch (\Exception $e) {
             return response()->json(
                 [
-                    'error'    => 'Donation did not confirmed',
+                    'error'    => 'Payment did not confirmed',
                     'detailes' => $e->getMessage(),
                 ],
                 500
